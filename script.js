@@ -159,10 +159,11 @@ document.addEventListener("DOMContentLoaded", () => {
       img.classList.add('visible'); // Assuming your CSS fades in .visible
 
       // Play audio corresponding to stage
-      const audio = new Audio(`Audios/Audio${stage}.mp3`);
+      const audio = new Audio(`Audio${stage}.mp3`);
       audio.play().catch(e => {
         console.warn("Audio play was prevented or failed:", e);
       });
     });
   });
+
 });
