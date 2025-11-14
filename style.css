@@ -603,3 +603,19 @@ h1, h2, h3 {
 .reveal-btn:hover {
   background: rgba(156, 92, 138, 0.95);
 }
+
+@media (max-width: 480px) {
+  .image-placeholder {
+    width: 320px;   /* smaller width */
+    height: 448px;  /* keep same aspect ratio (approx 506x708 scaled down) */
+    margin: 20px auto;  /* centered with auto left/right margin */
+  }
+
+  .reveal-image {
+    width: 320px;
+    height: 448px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* center absolutely positioned image */
+  }
+}
