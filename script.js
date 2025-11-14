@@ -141,29 +141,38 @@ document.querySelectorAll('.reveal-btn').forEach(button => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Intersection observer, gallery toggles, hero scroll etc. remain as before ...
+document.querySelectorAll('.reveal-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const stage = button.dataset.stage;
+    const container = button.parentElement;
+    const img = container.querySelector('.reveal-image');
+    const durationBar = container.querySelector('.duration-bar');
 
-  // Reveal button logic with audio playback
-  document.querySelectorAll('.reveal-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const stage = button.dataset.stage;
-      const container = button.parentElement;
-      const img = container.querySelector('.reveal-image');
+    // Hide the button
+    button.style.display = 'none';
 
-      // Hide the button
-      button.style.display = 'none';
+    // Show and fade in the image
+    img.classList.remove('hidden');
+    img.classList.add('visible');
 
-      // Show and fade in the image
-      img.classList.remove('hidden');
-      img.classList.add('visible'); // Assuming your CSS fades in .visible
+    // Create audio element and load the file
+    const audio = new Audio(`Audio${stage}.mp3`);
 
-      // Play audio corresponding to stage
-      const audio = new Audio(`Audio${stage}.mp3`);
+    // When metadata loaded, we know duration
+    audio.addEventListener('loadedmetadata', () => {
+      const duration = audio.duration; // seconds
+
+      // Animate the duration bar from 0% to 100% width over audio duration
+      durationBar.style.transition = `width ${duration}s linear`;
+      durationBar.style.width = '100%';
+
+      // Play the audio
       audio.play().catch(e => {
         console.warn("Audio play was prevented or failed:", e);
       });
     });
-  });
 
+    // Reset bar width in case button clicked multiple times
+    durationBar.style.width = '0%';
+  });
 });
