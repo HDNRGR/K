@@ -294,7 +294,7 @@ if (stage6Section) {
       if (entry.isIntersecting && !hasShownPopups) {
         hasShownPopups = true;  // Mark as shown to prevent repeats
 
-        showTopPopup("Let's add a background for our flower :)", 3000);
+        showTopPopup("Thought we should add a background for our flower :)", 3000);
 
         // Show second popup after the first one disappears (duration + buffer)
         setTimeout(() => {
@@ -312,4 +312,5 @@ if (stage6Section) {
 
 
 });
+
 
