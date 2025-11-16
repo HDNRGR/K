@@ -298,8 +298,11 @@ if (stage6Section) {
 
         // Show second popup after the first one disappears (duration + buffer)
         setTimeout(() => {
-          showTopPopup("We'll start with an outline, click the right arrow!", 3000);
+          showTopPopup("Pro tip you can tap the image to expand it.", 3000);
         }, 3200); // 3000ms + 200ms buffer
+        setTimeout(() => {
+          showTopPopup("We'll start with an outline, click the right arrow!", 3000);
+        }, 6400); // 3000ms + 200ms buffer
       }
     });
   }, { threshold: 0.5 }); // Trigger when 50% visible
@@ -309,3 +312,4 @@ if (stage6Section) {
 
 
 });
+
